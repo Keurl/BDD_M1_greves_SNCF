@@ -92,6 +92,6 @@ CREATE TABLE Table_Faits(
 
 @tuples.sql
 
-@requetes.sql
-
 @privileges.sql
+
+@requetes.sql
