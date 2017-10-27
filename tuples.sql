@@ -94,3 +94,7 @@ INSERT INTO Motifs VALUES (12, 'Ouverture de négociations sur la réforme de la
 INSERT INTO Nb_Travailleurs VALUES (7, 98338.0, 6158.0, 6.3);
 INSERT INTO Table_Faits VALUES (seq_Fait.nextval, 7, 1, 7, 12, 7);
 INSERT INTO Table_Faits VALUES (seq_Fait.nextval, 7, 2, 7, 12, 7);
+
+
+GRANT SELECT ON Motifs TO admi45 WITH GRANT OPTION;
+GRANT SELECT ON Motifs TO admi13 WITH GRANT OPTION;
