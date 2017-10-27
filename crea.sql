@@ -1,6 +1,6 @@
 SET SERVEROUTPUT ON
-SET PAGESIZE 300
-SET LINESIZE 200
+SET PAGESIZE 200
+SET LINESIZE 100
 
 prompt *************************************************************
 prompt ******************** DROP TABLE *****************************
@@ -26,7 +26,7 @@ CREATE TABLE Temps(
 	date_deb DATE,
 	date_fin DATE,
 	CONSTRAINT pk_Temps PRIMARY KEY(ID_Temps),
-	CONSTRAINT check_debfin CHECK (date_deb < date_fin));
+	CONSTRAINT check_debfin CHECK (date_deb <= date_fin));
 
 
 prompt
@@ -34,7 +34,7 @@ prompt ******************** Orga ***************************
 
 CREATE TABLE Orga(
 	ID_Orga INT,
-	nom_orga VARCHAR(255),
+	nom_orga VARCHAR(100),
 	CONSTRAINT pk_Orga PRIMARY KEY(ID_Orga));
 
 
@@ -43,7 +43,7 @@ prompt ******************** Metiers Cibles ***************************
 
 CREATE TABLE Metiers_Cibles(
 	ID_Metiers_Cibles INT,
-	nom_metier VARCHAR(255),
+	nom_metier VARCHAR(100),
 	CONSTRAINT pk_Metiers_Cibles PRIMARY KEY(ID_Metiers_Cibles));
 
 
@@ -52,7 +52,7 @@ prompt ******************** Motifs ***************************
 
 CREATE TABLE Motifs(
 	ID_Motifs INT,
-	motifs VARCHAR(255),
+	motifs VARCHAR(800),
 	CONSTRAINT pk_Motifs PRIMARY KEY(ID_Motifs));
 
 
@@ -63,7 +63,7 @@ CREATE TABLE Nb_Travailleurs(
 	ID_Nb_Travailleurs INT,
 	nb_suppose_travaille INT,
 	nb_grevistes INT,
-	taux_grevistes NUMBER(3,2),
+	taux_grevistes NUMBER(4,2),
 	CONSTRAINT pk_Nb_Travailleurs PRIMARY KEY(ID_Nb_Travailleurs));
 
 
