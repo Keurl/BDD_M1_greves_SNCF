@@ -9,6 +9,7 @@ prompt *******************************************************************
 
 avec group by cube : de 2002 a 2005, le nombre de grèvistes par grève par année
 
+*top 10 des plus grosses grèves toutes années confondu
 
 
 
