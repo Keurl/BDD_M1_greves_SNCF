@@ -11,7 +11,7 @@ automatiser le processus
 
 La démo de la création de l'entrepôt de données ainsi que de l'exécution des requêtes s'effectue au moins du fichier 'demo.bash'.
 
-<h1> Exécution de la démonstration </h>
+# Exécution de la démonstration
 - Ouvrir un invité de commande et se placer dans le dossier contenant le projet.
 - Exécuter la commande : chmod 755 demo.bash
 - Exécuter la commande : ./demo.bash
