@@ -51,3 +51,13 @@ GROUP BY GROUPING SETS((O.ID_Orga), (EXTRACT( YEAR FROM date_deb) AS annee));
 --SELECT T.saison, Count(tf)
 --FROM Table_Faits tf NATURAL JOIN Temps
 --GROUP BY ROLLUP (T.saison)
+
+/*top 10 des plus grosses grèves toutes années confondu*/
+
+SELECT date_deb, date_fin, motifs, nb_grevistes, rank() over(order by nb_grevistes desc)
+FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs NATURAL JOIN Motifs
+WHERE ROWNUM <=10;
+
+/* nombre de grevistes total par an (uniquement les agregats) */
+
+SELECT 
