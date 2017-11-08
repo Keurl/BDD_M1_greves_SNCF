@@ -2,10 +2,16 @@
 Projet de Base de Données Master 1, création d'un entrepôt de données en Oracle
 
 
-- motifs : décortiquer en classes de motifs : salaire/retraites/...
-- table des faits : rajouter le nombre de jours de durée de la grève
-- faire calculer le taux de grévistes dans la table de fait
-recherche avec un LIKE = autoriser les multi-values
+- Motifs : décortiquer en classes de motifs : salaire/retraites/...
+- Table des faits : rajouter le nombre de jours de durée de la grève
+- Faire calculer le taux de grévistes dans la table de fait
+Recherche avec un LIKE = autoriser les multi-values
 
 automatiser le processus
 
+La démo de la création de l'entrepôt de données ainsi que de l'exécution des requêtes s'effectue au moins du fichier 'demo.bash'.
+
+<h1> Exécution de la démonstration </h>
+- Ouvrir un invité de commande et se placer dans le dossier contenant le projet.
+- Exécuter la commande : chmod -x demo.bash
+- Exécuter la commande : ./demo.bash
