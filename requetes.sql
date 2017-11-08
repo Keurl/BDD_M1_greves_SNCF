@@ -36,3 +36,18 @@ durée moyenne des grèves en 2010
 SELECT  EXTRACT( YEAR FROM date_deb) AS annee, date_deb, SUM(DISTINCT nb_grevistes) 
 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 GROUP BY ROLLUP (EXTRACT( YEAR FROM date_deb), date_deb);
+
+
+/* C'est nul après */ 
+
+--afficher le nombre de grèviste par an et par association entre 2002 et 2005 en utilisant grouping sets
+
+SELECT O.ID_Orga, EXTRACT( YEAR FROM t.date_deb) AS annee, SUM(DISTINCT nb_grevistes)
+FROM Table_Faits tf NATURAL JOIN Nb_Travailleurs NbT NATURAL JOIN Temps t NATURAL JOIN Orga O
+GROUP BY GROUPING SETS((O.ID_Orga), (EXTRACT( YEAR FROM date_deb) AS annee));
+
+--afficher les nombre de grèves par saison
+
+--SELECT T.saison, Count(tf)
+--FROM Table_Faits tf NATURAL JOIN Temps
+--GROUP BY ROLLUP (T.saison)
