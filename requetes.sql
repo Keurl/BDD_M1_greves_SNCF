@@ -58,6 +58,8 @@ SELECT date_deb, date_fin, motifs, nb_grevistes, rank() over(order by nb_grevist
 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs NATURAL JOIN Motifs
 WHERE ROWNUM <=10;
 
-/* nombre de grevistes total par an (uniquement les agregats) */
+/* nombre de grevistes total par an (uniquement les agregats) a tester */
 
-SELECT 
+SELECT annee, SUM(nb_grevistes)
+FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+GROUP BY GROUPING SETS (annee);
