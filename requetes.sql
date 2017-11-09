@@ -63,3 +63,8 @@ WHERE ROWNUM <=10;
 SELECT annee, SUM(nb_grevistes)
 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 GROUP BY GROUPING SETS (annee);
+
+/* % de grève de chaque type chaque année depuis 2002
+ pour chaque année, chaque categorie faire : nombre de grèves dans cette categorie cette annee/nombre de grèves toute l'année x 100*/
+
+SELECT annee, 
