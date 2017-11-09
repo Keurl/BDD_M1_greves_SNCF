@@ -1,6 +1,6 @@
 SET SERVEROUTPUT ON
-SET PAGESIZE 200
-SET LINESIZE 100
+SET PAGESIZE 9999
+SET LINESIZE 9999
 
 prompt *************************************************************
 prompt ******************** DROP TABLE *****************************
@@ -25,7 +25,7 @@ CREATE TABLE Temps(
 	ID_Temps INT,
 	date_deb DATE,
 	date_fin DATE,
-	saison VARCHAR(20),
+	saison VARCHAR2(20),
 	CONSTRAINT pk_Temps PRIMARY KEY(ID_Temps),
 	CONSTRAINT check_deb_notnull CHECK (date_deb IS NOT NULL),
 	CONSTRAINT check_debfin CHECK (date_deb <= date_fin));
@@ -36,7 +36,7 @@ prompt ******************** Orga ***************************
 
 CREATE TABLE Orga(
 	ID_Orga INT,
-	nom_orga VARCHAR(100),
+	nom_orga VARCHAR2(1000),
 	CONSTRAINT pk_Orga PRIMARY KEY(ID_Orga));
 
 
@@ -45,7 +45,7 @@ prompt ******************** Metiers Cibles ***************************
 
 CREATE TABLE Metiers_Cibles(
 	ID_Metiers_Cibles INT,
-	nom_metier VARCHAR(100),
+	nom_metier VARCHAR2(1000),
 	CONSTRAINT pk_Metiers_Cibles PRIMARY KEY(ID_Metiers_Cibles));
 
 
@@ -54,8 +54,8 @@ prompt ******************** Motifs ***************************
 
 CREATE TABLE Motifs(
 	ID_Motifs INT,
-	motifs VARCHAR(800),
-	categorie_greve VARCHAR(200),
+	motifs VARCHAR2(4000),
+	categorie_greve VARCHAR2(1000),
 	CONSTRAINT pk_Motifs PRIMARY KEY(ID_Motifs));
 
 
@@ -79,7 +79,7 @@ CREATE TABLE Table_Faits(
 	ID_Metiers_Cibles INT,
 	ID_Motifs INT,
 	ID_Nb_Travailleurs INT,
-	annee YEAR,
+	annee NUMBER(4,0),
 	taux_grevistes NUMBER(4,2),
 	duree_en_jour INT,
 	CONSTRAINT pk_TableFaits PRIMARY KEY(ID_Fait),

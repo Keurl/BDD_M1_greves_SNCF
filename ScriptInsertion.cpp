@@ -61,13 +61,13 @@ int main(int argc, char const *argv[]){
     
                     // We found what the season is depanding of the date_beg[1] of the year
                     if(dateBeg[1] >= 1 && dateBeg[1] <= 3)
-                        insertTable[0] += "\"Printemps\");";
+                        insertTable[0] += "\'Printemps\');";
                     else if(dateBeg[1] >= 4 && dateBeg[1] <= 6)
-                        insertTable[0] += "\"Ete\");";
+                        insertTable[0] += "\'Ete\');";
                     else if(dateBeg[1] >= 7 && dateBeg[1] <= 9)
-                        insertTable[0] += "\"Automne\");";
+                        insertTable[0] += "\'Automne\');";
                     else
-                        insertTable[0] += "\"Hiver\");";
+                        insertTable[0] += "\'Hiver\');";
                     
                     // We calculate the rate of strikers
                     if(nbStrikers == "" && nbWorkers == "")
@@ -116,7 +116,7 @@ int main(int argc, char const *argv[]){
                     if(strikeType == "")
                         insertTable[1] += "NULL);";
                     else
-                        insertTable[1] += string("\"") + strikeType + string("\");");
+                        insertTable[1] += string("\'") + strikeType + string("\');");
 
                     // We write our insert in the file used for the creation of the tuples
                     for (int i = 0; i < 6; ++i){
@@ -162,7 +162,7 @@ int main(int argc, char const *argv[]){
                                 comptNull--;
                             }
                             else
-                                insertTable[1] += "\",";
+                                insertTable[1] += "\',";
                             break; 
                         case 5:
                             if(comptNull > 2){ // Alors on a un élément NULL
@@ -170,7 +170,7 @@ int main(int argc, char const *argv[]){
                                 comptNull--;
                             }
                             else
-                                insertTable[2] += "\");";
+                                insertTable[2] += "\');";
                             break; 
                         case 6:
                             if(comptNull > 2){ // Alors on a un élément NULL
@@ -178,7 +178,7 @@ int main(int argc, char const *argv[]){
                                 comptNull--;
                             }
                             else  
-                                insertTable[3] += "\");";
+                                insertTable[3] += "\');";
                             break; 
                         case 7: 
                             if(comptNull > 2) // Alors on a un élément NULL
@@ -222,19 +222,28 @@ int main(int argc, char const *argv[]){
                            switch (comptAttr){   
                                 case 4:
                                     if (comptNull == 2)
-                                        insertTable[1] += '"';
+                                        insertTable[1] += '\'';
+
+                                    if (caracter == '\'')
+                                        insertTable[1] += '\'';
 
                                     insertTable[1] += caracter;
                                     break; 
                                 case 5: 
                                     if (comptNull == 2)
-                                        insertTable[2] += '"';
+                                        insertTable[2] += '\'';
+
+                                    if (caracter == '\'')
+                                        insertTable[2] += '\'';
 
                                     insertTable[2] += caracter;
                                     break; 
                                 case 6:
                                     if (comptNull == 2)
-                                        insertTable[3] += '"';
+                                        insertTable[3] += '\'';
+
+                                    if (caracter == '\'')
+                                        insertTable[3] += '\'';
 
                                     insertTable[3] += caracter;
                                     break; 
@@ -269,20 +278,29 @@ int main(int argc, char const *argv[]){
                             break; 
                         case 4:
                             if (comptNull == 2)
-                                insertTable[1] += '"';
+                                insertTable[1] += '\'';
 
+                            if (caracter == '\'')
+                                insertTable[1] += '\'';
+                                    
                             insertTable[1] += caracter;
                             strikeReasons += caracter;
                             break; 
                         case 5:
                             if (comptNull == 2)
-                                insertTable[2] += '"';
+                                insertTable[2] += '\'';
+
+                            if (caracter == '\'')
+                                insertTable[2] += '\'';
 
                             insertTable[2] += caracter;
                             break; 
                         case 6:
                             if (comptNull == 2)
-                                insertTable[3] += '"';
+                                insertTable[3] += '\'';
+
+                            if (caracter == '\'')
+                                insertTable[3] += '\'';
                             
                             insertTable[3] += caracter;
                             break; 
@@ -306,6 +324,9 @@ int main(int argc, char const *argv[]){
 
             read.close();  // on ferme le fichier
             write.close();  // on ferme le fichier
+
+
+            cout << endl << "Creation of the tuples succeded." << endl;
         }else  // sinon
             cerr << "Impossible d'ouvrir le fichier !" << endl;
 
