@@ -65,6 +65,9 @@ FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 GROUP BY GROUPING SETS (annee);
 
 /* % de grève de chaque type chaque année depuis 2002
- pour chaque année, chaque categorie faire : nombre de grèves dans cette categorie cette annee/nombre de grèves toute l'année x 100*/
+ pour chaque année, chaque categorie faire : nombre de grèves dans cette categorie cette annee/nombre de grèves toute l'année x 100
+ modifier le select du nombre de greve par an pour décupler/cloner les */
 
-SELECT annee, 
+SELECT annee, categorie_greve, ((SELECT COUNT(*) FROM Table_Faits NATURAL JOIN Motifs GROUP BY (annee,categorie_greve)) /(SELECT COUNT(*) FROM Table_Faits GROUP BY annee)*100) AS ratio_type_greve
+FROM Table_Faits NATURAL JOIN Motifs NATURAL JOIN Temps 
+GROUP BY GROUPING SETS (annee,categorie_greve);
