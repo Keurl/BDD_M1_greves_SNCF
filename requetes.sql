@@ -107,19 +107,83 @@ SELECT saison, Count(*)
 FROM Table_Faits NATURAL JOIN Temps
 GROUP BY ROLLUP (saison);
 
+
 prompt ****************************  REQUETE N°7
 prompt Group By Cube avec les années, les syndicats : CGT, SUD et CFDT et les métiers : tractionnaires, agent de manoeuvre et infrastructure
 prompt
 
-SELECT 	annee,	(SELECT COUNT(*) 
-		 FROM Table_Faits NATURAL JOIN Organisations 
-		 WHERE (nom_orga LIKE('%CGT%') OR 
-			nom_orga LIKE('%SUD%') OR 
-			nom_orga LIKE('%CFDT%')), 
-		(SELECT COUNT(*) 
-		 FROM Table_Faits NATURAL JOIN Metiers_Cibles 
-		 WHERE (nom_orga LIKE('%tractionnaire%') OR
-			nom_orga LIKE('%agent de manoeuvre%') OR
-			nom_orga LIKE('%infrastructure%')),
-		COUNT(nb_grevistes)
-FROM Table_Faits NATURAL JOIN Metiers_Cibles NATURAL JOIN Organisations NATURAL JOIN  
+SELECT 	annee, (SELECT nom_orga
+				FROM Organisations 
+				WHERE (nom_orga LIKE('%CGT%')
+				UNION
+				SELECT nom_orga
+				FROM Organisations 
+				WHERE (nom_orga LIKE('%SUD%')
+				UNION
+				SELECT nom_orga 
+				FROM Organisations 
+				WHERE (nom_orga LIKE('%CFDT%')) AS syndics, (SELECT nom_metier
+															FROM Metiers_Cibles 
+															WHERE (nom_metier LIKE('%tractionnaire%')
+															UNION
+															SELECT nom_metier
+															FROM Metiers_Cibles 
+															WHERE (nom_metier LIKE('%agent de manoeuvre%')
+															UNION
+															SELECT nom_metier
+															FROM Metiers_Cibles 
+															WHERE (nom_metier LIKE ('%infrastructure%')) AS metiers, COUNT(nb_grevistes)
+FROM Table_Faits NATURAL JOIN Metiers_Cibles NATURAL JOIN Organisations NATURAL JOIN
+GROUP BY CUBE (annee, 	(SELECT nom_orga
+						FROM Organisations 
+						WHERE (nom_orga LIKE('%CGT%')
+						UNION
+						SELECT nom_orga
+						FROM Organisations 
+						WHERE (nom_orga LIKE('%SUD%')
+						UNION
+						SELECT nom_orga 
+						FROM Organisations 
+						WHERE (nom_orga LIKE('%CFDT%')), 	(SELECT nom_metier
+															FROM Metiers_Cibles 
+															WHERE (nom_metier LIKE('%tractionnaire%')
+															UNION
+															SELECT nom_metier
+															FROM Metiers_Cibles 
+															WHERE (nom_metier LIKE('%agent de manoeuvre%')
+															UNION
+															SELECT nom_metier
+															FROM Metiers_Cibles 
+															WHERE (nom_metier LIKE ('%infrastructure%')))
+
+
+/* A tester
+
+SELECT nom_orga, COUNT(*) 
+FROM Organisations 
+WHERE (nom_orga LIKE('%CGT%')
+UNION
+SELECT nom_orga, COUNT(*) 
+FROM Organisations 
+WHERE (nom_orga LIKE('%SUD%')
+UNION
+SELECT nom_orga, COUNT(*) 
+FROM Organisations 
+WHERE (nom_orga LIKE('%CFDT%')
+
+SELECT x.* INTO nom_metiers_test
+FROM(	SELECT nom_metier, COUNT(*) 
+		FROM Metiers_Cibles 
+		WHERE (nom_metier LIKE('%tractionnaire%')
+		UNION
+		SELECT nom_metier, COUNT(*) 
+		FROM Metiers_Cibles 
+		WHERE (nom_metier LIKE('%agent de manoeuvre%')
+		UNION
+		SELECT nom_metier, COUNT(*) 
+		FROM Metiers_Cibles 
+		WHERE (nom_metier LIKE ('%infrastructure%')) x
+
+SELECT * 
+FROM nom_metiers_test
+*/
