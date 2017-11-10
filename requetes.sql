@@ -48,8 +48,11 @@ Column Motifs format a40
 Column date_deb format a11
 Column date_fin format a11
 
-SELECT date_deb, date_fin, motifs, nb_grevistes, rank() over(order by nb_grevistes desc) AS top_10
-FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs NATURAL JOIN Motifs
+SELECT *
+FROM 
+	(SELECT date_deb, date_fin, nb_grevistes, rank() over(order by nb_grevistes desc) AS top_10
+	 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+	WHERE nb_grevistes IS NOT NULL)
 WHERE ROWNUM <=10;
 
 /* ROWNUM va être exécuter avant le order by ce qui ici posait soucis, avec ORACLE 12 il existe la commande FETCH qui permet de résoudre le problème*/
@@ -61,7 +64,8 @@ prompt
 
 SELECT annee, SUM(nb_grevistes)
 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
-GROUP BY GROUPING SETS (annee);
+GROUP BY GROUPING SETS (annee)
+ORDER BY annee ASC;
 
 
 prompt ****************************  REQUETE N°4
