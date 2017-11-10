@@ -96,4 +96,4 @@ prompt Affiche le nombre de grèves par saison utilisant group by rollup
 
 SELECT saison, Count(*)
 FROM Table_Faits NATURAL JOIN Temps
-GROUP BY ROLLUP (saison)
+GROUP BY ROLLUP (saison);
