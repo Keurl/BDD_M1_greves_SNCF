@@ -113,13 +113,13 @@ prompt
 
 SELECT 	annee,	(SELECT COUNT(*) 
 		 FROM Table_Faits NATURAL JOIN Organisations 
-		 WHERE (nom_orga LIKE('CGT') OR 
-			nom_orga LIKE('SUD') OR 
-			nom_orga LIKE('CFDT')), 
+		 WHERE (nom_orga LIKE('%CGT%') OR 
+			nom_orga LIKE('%SUD%') OR 
+			nom_orga LIKE('%CFDT%')), 
 		(SELECT COUNT(*) 
 		 FROM Table_Faits NATURAL JOIN Metiers_Cibles 
-		 WHERE (nom_orga LIKE('tractionnaires') OR
-			nom_orga LIKE('agent de manoeuvre') OR
-			nom_orga LIKE('infrastructure')),
+		 WHERE (nom_orga LIKE('%tractionnaire%') OR
+			nom_orga LIKE('%agent de manoeuvre%') OR
+			nom_orga LIKE('%infrastructure%')),
 		COUNT(nb_grevistes)
 FROM Table_Faits NATURAL JOIN Metiers_Cibles NATURAL JOIN Organisations NATURAL JOIN  
