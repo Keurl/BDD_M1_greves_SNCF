@@ -1,6 +1,7 @@
 # BDD_M1_greves_SNCF
 Projet de Base de Données Master 1, création d'un entrepôt de données en Oracle
 
+Lien vers le data set : https://data.sncf.com/explore/dataset/mouvements-sociaux-depuis-2002/
 
 - Motifs : décortiquer en classes de motifs : salaire/retraites/...
 - Table des faits : rajouter le nombre de jours de durée de la grève
