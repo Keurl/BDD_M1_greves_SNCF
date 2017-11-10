@@ -38,19 +38,20 @@ FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 GROUP BY ROLLUP (EXTRACT( YEAR FROM date_deb), date_deb);
 
 
-/* C'est nul après */ 
+prompt *******************************************************************
+prompt Affiche le nombre de grèviste par an et par association en utilisant grouping sets
 
---afficher le nombre de grèviste par an et par association entre 2002 et 2005 en utilisant grouping sets
+SELECT ID_Orga, annee, SUM(DISTINCT nb_grevistes)
+FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Temps NATURAL JOIN Orga
+GROUP BY GROUPING SETS((annee), (ID_Orga), ());
 
-SELECT O.ID_Orga, EXTRACT( YEAR FROM t.date_deb) AS annee, SUM(DISTINCT nb_grevistes)
-FROM Table_Faits tf NATURAL JOIN Nb_Travailleurs NbT NATURAL JOIN Temps t NATURAL JOIN Orga O
-GROUP BY GROUPING SETS((O.ID_Orga), (EXTRACT( YEAR FROM date_deb) AS annee));
 
---afficher les nombre de grèves par saison
+prompt *******************************************************************
+prompt Affiche le nombre de grèves par saison utilisant group by rollup
 
---SELECT T.saison, Count(tf)
---FROM Table_Faits tf NATURAL JOIN Temps
---GROUP BY ROLLUP (T.saison)
+SELECT saison, Count(*)
+FROM Table_Faits NATURAL JOIN Temps
+GROUP BY ROLLUP (saison)
 
 /*top 10 des plus grosses grèves toutes années confondu : a tester*/
 
