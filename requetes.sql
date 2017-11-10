@@ -48,11 +48,8 @@ Column Motifs format a40
 Column date_deb format a11
 Column date_fin format a11
 
-SELECT *
-FROM 
-	(SELECT date_deb, date_fin, nb_grevistes, rank() over(order by nb_grevistes desc) AS top_10
-	 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
-	WHERE nb_grevistes IS NOT NULL)
+SELECT date_deb, date_fin, motifs, nb_grevistes, rank() over(order by nb_grevistes desc) AS top_10
+FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs NATURAL JOIN Motifs
 WHERE ROWNUM <=10;
 
 /* ROWNUM va être exécuter avant le order by ce qui ici posait soucis, avec ORACLE 12 il existe la commande FETCH qui permet de résoudre le problème*/
@@ -64,8 +61,7 @@ prompt
 
 SELECT annee, SUM(nb_grevistes)
 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
-GROUP BY GROUPING SETS (annee)
-ORDER BY annee ASC;
+GROUP BY GROUPING SETS (annee);
 
 
 prompt ****************************  REQUETE N°4
@@ -82,11 +78,13 @@ GROUP BY GROUPING SETS (annee,categorie_greve);
 
 
 prompt ****************************  REQUETE N°5
-prompt Affiche le nombre de grèviste par an et par association en utilisant grouping sets
+prompt Affiche le nombre de grèviste par an et par association entre 2002 et 2005 en utilisant grouping sets
 
-SELECT ID_Orga, annee, SUM(DISTINCT nb_grevistes)
-FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Temps NATURAL JOIN Orga
-GROUP BY GROUPING SETS((annee), (ID_Orga), ());
+SELECT ID_Organisation, annee, SUM(DISTINCT nb_grevistes)
+FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Temps NATURAL JOIN Organisation
+WHERE annee >= 2002 and annee <= 2005
+GROUP BY GROUPING SETS((annee, ID_Organisation), (annee), ())
+ORDER BY annee, ID_Organisation;
 
 
 prompt ****************************  REQUETE N°6
