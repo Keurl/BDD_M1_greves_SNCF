@@ -76,7 +76,12 @@ prompt
  pour chaque année, chaque categorie faire : nombre de grèves dans cette categorie cette annee/nombre de grèves toute l'année x 100
  modifier le select du nombre de greve par an pour décupler/cloner les */
 
-SELECT annee, categorie_greve, ((SELECT COUNT(*) FROM Table_Faits NATURAL JOIN Motifs GROUP BY (annee,categorie_greve)) /((SELECT COUNT(*)/3 FROM Table_Faits JOIN Tally ON Tally.Table_Faits <= 3 GROUP BY annee)*100)) AS ratio_type_greve
+SELECT annee, categorie_greve,  ((SELECT COUNT(*) 
+				  FROM Table_Faits NATURAL JOIN Motifs 
+				  GROUP BY (annee,categorie_greve)) /
+				((SELECT COUNT(*)/3 
+				  FROM Table_Faits JOIN Tally ON Tally.Table_Faits <= 3 
+				  GROUP BY annee)*100)) AS ratio_type_greve
 FROM Table_Faits NATURAL JOIN Motifs NATURAL JOIN Temps 
 GROUP BY GROUPING SETS (annee,categorie_greve);
 
@@ -101,3 +106,20 @@ prompt
 SELECT saison, Count(*)
 FROM Table_Faits NATURAL JOIN Temps
 GROUP BY ROLLUP (saison);
+
+prompt ****************************  REQUETE N°7
+prompt Group By Cube avec les années, les syndicats : CGT, SUD et CFDT et les métiers : tractionnaires, agent de manoeuvre et infrastructure
+prompt
+
+SELECT 	annee,	(SELECT COUNT(*) 
+		 FROM Table_Faits NATURAL JOIN Organisations 
+		 WHERE (nom_orga LIKE('CGT') OR 
+			nom_orga LIKE('SUD') OR 
+			nom_orga LIKE('CFDT')), 
+		(SELECT COUNT(*) 
+		 FROM Table_Faits NATURAL JOIN Metiers_Cibles 
+		 WHERE (nom_orga LIKE('tractionnaires') OR
+			nom_orga LIKE('agent de manoeuvre') OR
+			nom_orga LIKE('infrastructure')),
+		COUNT(nb_grevistes)
+FROM Table_Faits NATURAL JOIN Metiers_Cibles NATURAL JOIN Organisations NATURAL JOIN  
