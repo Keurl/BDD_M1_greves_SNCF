@@ -59,7 +59,7 @@ WHERE ROWNUM <=10;
 
 
 prompt ****************************  REQUETE N°3
-prompt Nombre de grevistes total par an (uniquement les agregats) a tester
+prompt Nombre de grevistes total par an (uniquement les agregats)
 prompt
 
 SELECT annee, SUM(nb_grevistes)
@@ -83,16 +83,20 @@ GROUP BY GROUPING SETS (annee,categorie_greve);
 
 prompt ****************************  REQUETE N°5
 prompt Affiche le nombre de grèviste par an et par association entre 2002 et 2005 en utilisant grouping sets
+prompt
 
-SELECT ID_Organisation, annee, SUM(DISTINCT nb_grevistes)
-FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Temps NATURAL JOIN Organisation
+/* ne marche pas à cause du multivalues pour les organisation... On a un ID par tuple en faite...*/
+
+SELECT ID_Organisations, annee, SUM(DISTINCT nb_grevistes)
+FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Temps NATURAL JOIN Organisations
 WHERE annee >= 2002 and annee <= 2005
-GROUP BY GROUPING SETS((annee, ID_Organisation), (annee), ())
-ORDER BY annee, ID_Organisation;
+GROUP BY GROUPING SETS((annee, ID_Organisations), (annee), ())
+ORDER BY annee, ID_Organisations;
 
 
 prompt ****************************  REQUETE N°6
 prompt Affiche le nombre de grèves par saison utilisant group by rollup
+prompt
 
 SELECT saison, Count(*)
 FROM Table_Faits NATURAL JOIN Temps
