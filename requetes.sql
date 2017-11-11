@@ -74,7 +74,9 @@ prompt
 
 /* % de grève de chaque type chaque année depuis 2002
  pour chaque année, chaque categorie faire : nombre de grèves dans cette categorie cette annee/nombre de grèves toute l'année x 100
- modifier le select du nombre de greve par an pour décupler/cloner les */
+ modifier le select du nombre de greve par an pour décupler/cloner les
+ s'aider de ça : https://www.developpez.net/forums/d349204/bases-donnees/oracle/sql/10g-express-edition-calculer-pourcentage-simple-select/
+ */
 
 SELECT annee, categorie_greve,  ((SELECT COUNT(*) 
 				  FROM Table_Faits NATURAL JOIN Motifs 
