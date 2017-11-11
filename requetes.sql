@@ -34,6 +34,8 @@ durée moyenne des grèves en 2010
 prompt ****************************  REQUETE N°1
 prompt 
 
+/* régler le problème de DISTINCT avec les doublons */
+
 SELECT  annee, date_deb, SUM(DISTINCT nb_grevistes) AS nb_grevistes
 FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 WHERE nb_grevistes IS NOT NULL
