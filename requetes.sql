@@ -107,7 +107,7 @@ prompt
 
 SELECT ID_Organisations, annee, SUM(DISTINCT nb_grevistes)
 FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Temps NATURAL JOIN Organisations
-WHERE annee >= 2002 and annee <= 2005
+WHERE annee >= 2002 and annee <= 2005 and nom_orga LIKE 'CGT'
 GROUP BY GROUPING SETS((annee, ID_Organisations), (annee), ())
 ORDER BY annee, ID_Organisations;
 
