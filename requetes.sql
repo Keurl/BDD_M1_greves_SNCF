@@ -16,7 +16,7 @@ SELECT annee, date_deb, SUM(nb_grevistes) AS nb_grevistes, GROUPING_ID(annee, da
 FROM 	(SELECT annee, date_deb, date_fin, nb_grevistes
 		FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 		GROUP BY (annee, date_deb, date_fin, nb_grevistes))
-WHERE nb_grevistes IS NOT NULL AND annee <= 209
+WHERE nb_grevistes IS NOT NULL AND annee <= 2009
 GROUP BY ROLLUP (annee, date_deb); 
 
 
