@@ -152,3 +152,9 @@ FROM
 WHERE annee >= 2010
 GROUP BY CUBE (annee, Syndics, Metier)
 ORDER BY annee;
+
+/* requête n°8 : WINDOW */
+
+SELECT annee, nb_grevistes, SUM(nb_grevistes) over (order by annee rows unbounded preceding) AS Cumul
+FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+Group by annee, nb_grevistes;
