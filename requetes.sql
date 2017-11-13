@@ -30,14 +30,13 @@ nombre total de grèvistes depuis 2011
 durée moyenne des grèves en 2010
 
   */
-  
 prompt ****************************  REQUETE N°1
 prompt 
 
-/* régler le problème de DISTINCT avec les doublons */
-
-SELECT  annee, date_deb, SUM(DISTINCT nb_grevistes) AS nb_grevistes
-FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+SELECT annee, date_deb, SUM(nb_grevistes) AS nb_grevistes
+FROM 	(SELECT annee, date_deb, date_fin, nb_grevistes
+		FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+		GROUP BY (annee, date_deb, date_fin, nb_grevistes))
 WHERE nb_grevistes IS NOT NULL
 GROUP BY ROLLUP (annee, date_deb); 
 
@@ -123,81 +122,33 @@ GROUP BY ROLLUP (saison);
 
 
 prompt ****************************  REQUETE N°7
-prompt Group By Cube avec les années, les syndicats : CGT, SUD et CFDT et les métiers : tractionnaires, agent de manoeuvre et infrastructure
+prompt Group By Cube avec les années, les syndicats : CGT et SUD; et les métiers : tractionnaires et agent de manoeuvre pour les année supérieurs ou égales à 2010
 prompt
 
-SELECT 	annee, (SELECT nom_orga
-				FROM Organisations 
-				WHERE (nom_orga LIKE('%CGT%')
-				UNION
-				SELECT nom_orga
-				FROM Organisations 
-				WHERE (nom_orga LIKE('%SUD%')
-				UNION
-				SELECT nom_orga 
-				FROM Organisations 
-				WHERE (nom_orga LIKE('%CFDT%')) AS syndics, (SELECT nom_metier
-															FROM Metiers_Cibles 
-															WHERE (nom_metier LIKE('%tractionnaire%')
-															UNION
-															SELECT nom_metier
-															FROM Metiers_Cibles 
-															WHERE (nom_metier LIKE('%agent de manoeuvre%')
-															UNION
-															SELECT nom_metier
-															FROM Metiers_Cibles 
-															WHERE (nom_metier LIKE ('%infrastructure%')) AS metiers, COUNT(nb_grevistes)
-FROM Table_Faits NATURAL JOIN Metiers_Cibles NATURAL JOIN Organisations NATURAL JOIN
-GROUP BY CUBE (annee, 	(SELECT nom_orga
-						FROM Organisations 
-						WHERE (nom_orga LIKE('%CGT%')
-						UNION
-						SELECT nom_orga
-						FROM Organisations 
-						WHERE (nom_orga LIKE('%SUD%')
-						UNION
-						SELECT nom_orga 
-						FROM Organisations 
-						WHERE (nom_orga LIKE('%CFDT%')), 	(SELECT nom_metier
-															FROM Metiers_Cibles 
-															WHERE (nom_metier LIKE('%tractionnaire%')
-															UNION
-															SELECT nom_metier
-															FROM Metiers_Cibles 
-															WHERE (nom_metier LIKE('%agent de manoeuvre%')
-															UNION
-															SELECT nom_metier
-															FROM Metiers_Cibles 
-															WHERE (nom_metier LIKE ('%infrastructure%')))
+Column nom_orga format a20
+Column Syndics format a6
 
-
-/* A tester
-
-SELECT nom_orga, COUNT(*) 
-FROM Organisations 
-WHERE (nom_orga LIKE('%CGT%')
-UNION
-SELECT nom_orga, COUNT(*) 
-FROM Organisations 
-WHERE (nom_orga LIKE('%SUD%')
-UNION
-SELECT nom_orga, COUNT(*) 
-FROM Organisations 
-WHERE (nom_orga LIKE('%CFDT%')
-
-SELECT x.* INTO nom_metiers_test
-FROM(	SELECT nom_metier, COUNT(*) 
-		FROM Metiers_Cibles 
-		WHERE (nom_metier LIKE('%tractionnaire%')
-		UNION
-		SELECT nom_metier, COUNT(*) 
-		FROM Metiers_Cibles 
-		WHERE (nom_metier LIKE('%agent de manoeuvre%')
-		UNION
-		SELECT nom_metier, COUNT(*) 
-		FROM Metiers_Cibles 
-		WHERE (nom_metier LIKE ('%infrastructure%')) x
-
-SELECT * 
-FROM nom_metiers_test
-*/
+SELECT annee, Syndics, Metier, COUNT(*) AS total
+FROM
+	(SELECT annee, 'CGT' AS Syndics, 'tractionnaire' AS Metier, COUNT(*) AS total
+	FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Organisations NATURAL JOIN Metiers_Cibles
+	WHERE nom_orga LIKE('%CGT%') AND nom_metier LIKE('%tractionnaire%')
+	GROUP BY annee
+	UNION
+	SELECT annee, 'SUD' AS Syndics, 'tractionnaire' AS Metier,  COUNT(*) AS total
+	FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Organisations NATURAL JOIN Metiers_Cibles
+	WHERE nom_orga LIKE('%SUD%') AND nom_metier LIKE('%tractionnaire%')
+	GROUP BY annee
+	UNION
+	SELECT annee, 'CGT' AS Syndics, 'agent de manoeuvre' AS Metier, COUNT(*) AS total
+	FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Organisations NATURAL JOIN Metiers_Cibles
+	WHERE nom_orga LIKE('%CGT%') AND nom_metier LIKE('%agent de manoeuvre%')
+	GROUP BY annee
+	UNION
+	SELECT annee, 'SUD' AS Syndics, 'agent de manoeuvre' AS Metier,  COUNT(*) AS total
+	FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Organisations NATURAL JOIN Metiers_Cibles
+	WHERE nom_orga LIKE('%SUD%') AND nom_metier LIKE('%agent de manoeuvre%')
+	GROUP BY annee)
+WHERE annee >= 2010
+GROUP BY CUBE (annee, Syndics, Metier)
+ORDER BY annee;
