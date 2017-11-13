@@ -44,7 +44,7 @@ prompt Nombre de grevistes total par an (uniquement les agregats)
 prompt
 
 SELECT annee, SUM(nb_grevistes) AS nb_grevistes
-FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+FROM Table_Faits NATURAL JOIN Nb_Travailleurs
 GROUP BY GROUPING SETS (annee)
 ORDER BY annee ASC;
 
@@ -158,7 +158,7 @@ FROM (SELECT  duree_en_jour, annee, nb_grevistes
 	FROM Table_Faits NATURAL JOIN Nb_Travailleurs NATURAL JOIN Organisations
 	WHERE nb_grevistes IS NOT NULL AND nom_orga LIKE('%CGT%')
 	ORDER By duree_en_jour DESC)
-WHERE ROWNUM <=5;
+WHERE ROWNUM <= 5;
 
 
 prompt ****************************  REQUETE N°9 ****************************
@@ -187,5 +187,5 @@ prompt Requête avec une window
 prompt
 
 SELECT annee, nb_grevistes, SUM(nb_grevistes) over (order by annee rows unbounded preceding) AS Cumul
-FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
+FROM Table_Faits NATURAL JOIN Nb_Travailleurs
 GROUP BY annee, nb_grevistes;
