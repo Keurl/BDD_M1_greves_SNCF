@@ -1,6 +1,6 @@
 SET SERVEROUTPUT ON
-SET PAGESIZE 9999
-SET LINESIZE 9999
+SET PAGESIZE 200
+SET LINESIZE 100
 
 prompt *************************************************************
 prompt ******************** DROP TABLE *****************************
@@ -32,12 +32,12 @@ CREATE TABLE Temps(
 
 
 prompt
-prompt ******************** Orga ***************************
+prompt ******************** Organisation ***************************
 
-CREATE TABLE Orga(
-	ID_Orga INT,
+CREATE TABLE Organisations(
+	ID_Organisations INT,
 	nom_orga VARCHAR2(1000),
-	CONSTRAINT pk_Orga PRIMARY KEY(ID_Orga));
+	CONSTRAINT pk_Orga PRIMARY KEY(ID_Organisations));
 
 
 prompt
@@ -75,7 +75,7 @@ prompt ******************** Table Faits ***************************
 CREATE TABLE Table_Faits(
 	ID_Fait INT,
 	ID_Temps INT,
-	ID_Orga INT,
+	ID_Organisations INT,
 	ID_Metiers_Cibles INT,
 	ID_Motifs INT,
 	ID_Nb_Travailleurs INT,
@@ -84,7 +84,7 @@ CREATE TABLE Table_Faits(
 	duree_en_jour INT,
 	CONSTRAINT pk_TableFaits PRIMARY KEY(ID_Fait),
  	CONSTRAINT fk_TF_Temps FOREIGN KEY (ID_Temps) REFERENCES Temps(ID_Temps),
- 	CONSTRAINT fk_TF_Orga FOREIGN KEY (ID_Orga) REFERENCES Orga(ID_Orga),
+ 	CONSTRAINT fk_TF_Organisations FOREIGN KEY (ID_Organisations) REFERENCES Organisations(ID_Organisations),
  	CONSTRAINT fk_TF_MetiersCibles FOREIGN KEY (ID_Metiers_Cibles) REFERENCES Metiers_Cibles(ID_Metiers_Cibles),
  	CONSTRAINT fk_TF_Motifs FOREIGN KEY (ID_Motifs) REFERENCES Motifs(ID_Motifs),
  	CONSTRAINT fk_TF_NbTravailleurs FOREIGN KEY (ID_Nb_Travailleurs) REFERENCES Nb_Travailleurs(ID_Nb_Travailleurs));
