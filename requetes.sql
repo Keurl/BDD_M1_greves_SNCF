@@ -80,7 +80,7 @@ prompt
  s'aider de ça : https://www.developpez.net/forums/d349204/bases-donnees/oracle/sql/10g-express-edition-calculer-pourcentage-simple-select/
  */
 
-SELECT annee, categorie_greve,  ((SELECT COUNT(*) 
+/* SELECT annee, categorie_greve,  ((SELECT COUNT(*) 
 				  FROM Table_Faits NATURAL JOIN Motifs 
 				  GROUP BY (annee,categorie_greve)) /
 				((SELECT COUNT(*)/3 
@@ -88,6 +88,16 @@ SELECT annee, categorie_greve,  ((SELECT COUNT(*)
 				  GROUP BY annee)*100)) AS ratio_type_greve
 FROM Table_Faits NATURAL JOIN Motifs NATURAL JOIN Temps 
 GROUP BY GROUPING SETS (annee,categorie_greve);
+
+annee = entreprise
+categorie = satisfaction */
+
+
+
+
+SELECT annee, categorie_greve, ROUND(100*RATIO_TO_REPORT(COUNT(*)) over (PARTITION BY annee),2) ratio_type_greve
+FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Motifs
+GROUP BY GROUPING SETS (annee, categorie_greve);
 
 
 prompt ****************************  REQUETE N°5
