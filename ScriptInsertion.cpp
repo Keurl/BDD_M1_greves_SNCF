@@ -7,7 +7,7 @@ void initialization(string insert[], int &compt, int beg[], int end[]){
 
     insert[0] = "INSERT INTO Temps VALUES (" + to_string(compt) + string(", to_date('");
     insert[1] = "INSERT INTO Motifs VALUES (" + to_string(compt) + string(",");
-    insert[2] = "INSERT INTO Orga VALUES (" + to_string(compt) + string(",");
+    insert[2] = "INSERT INTO Organisations VALUES (" + to_string(compt) + string(",");
     insert[3] = "INSERT INTO Metiers_Cibles VALUES ("  + to_string(compt) + string(",");
     insert[4] = "INSERT INTO Nb_Travailleurs VALUES (" + to_string(compt) + string(",");
     insert[5] = "INSERT INTO Table_Faits VALUES (" + to_string(compt) + string(",");
@@ -31,6 +31,9 @@ int main(int argc, char const *argv[]){
  		
         if(read && write){
 
+            write << "SET SERVEROUTPUT OFF" << endl;
+            write << "SET FEEDBACK OFF" << endl;
+            write << "SET ECHO OFF" << endl << endl;
             // Initialization of the variables
         	string line ="";
 
@@ -320,7 +323,7 @@ int main(int argc, char const *argv[]){
         		}
         	}
 
-            write << "\n" << "\n" << "@privileges.sql" << "\n" << "\n" "@requetes.sql";
+            write << "\n" << "\n" << "@privileges.sql";
 
             read.close();  // on ferme le fichier
             write.close();  // on ferme le fichier

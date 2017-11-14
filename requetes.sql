@@ -1,4 +1,6 @@
 --Fichier d'insertion des requêtes
+SET SERVEROUTPUT ON
+SET FEEDBACK ON
 
 SET PAGESIZE 300
 SET LINESIZE 300
@@ -36,8 +38,6 @@ FROM
 	GROUP BY (date_deb, date_fin, nb_grevistes))
 WHERE ROWNUM <=10;
 
-/* ROWNUM va être exécuter avant le order by ce qui ici posait soucis, avec ORACLE 12 il existe la commande FETCH qui permet de résoudre le problème*/
-
 
 prompt ****************************  REQUETE N°3 ****************************
 prompt Nombre de grevistes total par an (uniquement les agregats)
@@ -53,9 +53,6 @@ prompt ****************************  REQUETE N°4 ****************************
 prompt  % de grève de chaque type chaque année depuis 2002
 prompt
 
-/* % de grève de chaque type chaque année depuis 2002
- pour chaque année, chaque categorie faire : nombre de grèves dans cette categorie cette annee/nombre de grèves toute l'année x 100
- modifier le select du nombre de greve par an pour décupler/cloner les */
 
 Column nom_orga format a20
 Column categorie_greve format a23
@@ -88,8 +85,6 @@ prompt ****************************  REQUETE N°5 ****************************
 prompt Affiche le nombre de grèviste par an et par association (uniquement pour CGT, SUD et CFDT) entre 2002 et 2005 en utilisant grouping sets
 prompt
 
-/* ne marche pas à cause du multivalues pour les organisation... On a un ID par tuple en faite...*/
-
 
 SELECT annee, Syndics, SUM(DISTINCT nb_grevistes) AS nb_grevistes
 FROM (SELECT annee, 'CGT' AS Syndics, nom_orga, nb_grevistes
@@ -106,7 +101,7 @@ FROM (SELECT annee, 'CGT' AS Syndics, nom_orga, nb_grevistes
 	FROM Table_Faits NATURAL JOIN Organisations NATURAL JOIN Metiers_Cibles NATURAL JOIN Nb_Travailleurs
 	WHERE nom_orga LIKE('%CFDT%')
 	GROUP BY annee, nom_orga, nb_grevistes)
-WHERE annee >= 2002 and annee <= 2005 and nom_orga LIKE '%CGT%'
+WHERE annee >= 2002 and annee <= 2005
 GROUP BY GROUPING SETS((annee, Syndics), (annee), ())
 ORDER BY annee, Syndics;
 
