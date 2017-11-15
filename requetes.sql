@@ -1,4 +1,6 @@
 --Fichier d'insertion des requêtes
+spool resultats.txt;
+
 SET SERVEROUTPUT ON
 SET FEEDBACK ON
 
@@ -79,6 +81,31 @@ FROM 	(SELECT annee, 'Salaire' AS categorie_greve, COUNT(*) AS Total
 		GROUP BY annee)
 GROUP BY (annee, categorie_greve, Total)
 ORDER BY annee;
+
+
+prompt ****************************  REQUETE N°4 bis ****************************
+prompt  % de grève de chaque type de grève
+prompt
+
+
+SELECT categorie_greve, ROUND(100*RATIO_TO_REPORT(Total) over (),2) ratio_type_greve
+FROM 	(SELECT 'Salaire' AS categorie_greve, COUNT(*) AS Total
+		FROM Table_Faits NATURAL JOIN Motifs
+		WHERE categorie_greve LIKE('%Salaire%')
+		UNION
+		SELECT 'Retraite' AS categorie_greve, COUNT(*) AS Total
+		FROM Table_Faits NATURAL JOIN Motifs
+		WHERE categorie_greve LIKE('%Retraite%')
+		UNION
+		SELECT 'Condition de travail' AS categorie_greve, COUNT(*) AS Total
+		FROM Table_Faits NATURAL JOIN Motifs
+		WHERE categorie_greve LIKE('%Conditions de travail%')
+		UNION
+		SELECT 'Not defined' AS categorie_greve, COUNT(*) AS Total
+		FROM Table_Faits NATURAL JOIN Motifs
+		WHERE categorie_greve IS NULL)
+GROUP BY (categorie_greve, Total);
+
 
 
 prompt ****************************  REQUETE N°5 ****************************
