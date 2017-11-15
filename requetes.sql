@@ -5,7 +5,7 @@ SET SERVEROUTPUT ON
 SET FEEDBACK ON
 
 SET PAGESIZE 300
-SET LINESIZE 300
+SET LINESIZE 100
 
 prompt *******************************************************************
 prompt ****************************  REQUETES ****************************
