@@ -1,0 +1,760 @@
+*******************************************************************
+****************************  REQUETES ****************************
+*******************************************************************
+
+****************************  REQUETE N°1 ****************************
+Permet de récupérer le nombre de grévistes par grève et par année
+
+
+     ANNEE DATE_DEB  NB_GREVISTES         ID                                                        
+---------- --------- ------------ ----------                                                        
+      2002 13-MAR-02         1491          0                                                        
+      2002 02-OCT-02          267          0                                                        
+      2002 25-NOV-02        12453          0                                                        
+      2002                  14211          1                                                        
+      2003 28-JAN-03         2279          0                                                        
+      2003 31-JAN-03          334          0                                                        
+      2003 10-FEB-03          694          0                                                        
+      2003 17-MAR-03        47312          0                                                        
+      2003 02-APR-03        41307          0                                                        
+      2003 12-MAY-03        92925          0                                                        
+      2003 13-MAY-03        33155          0                                                        
+      2003 22-MAY-03            8          0                                                        
+      2003 25-MAY-03           23          0                                                        
+      2003 02-JUN-03        20017          0                                                        
+      2003 10-JUN-03        45780          0                                                        
+      2003 19-JUN-03        11171          0                                                        
+      2003 16-DEC-03         1036          0                                                        
+      2003                 296041          1                                                        
+      2004 20-JAN-04        38298          0                                                        
+      2004 12-MAY-04        30472          0                                                        
+      2004 25-MAY-04          261          0                                                        
+      2004 11-JUN-04          173          0                                                        
+      2004 15-JUN-04          695          0                                                        
+      2004 18-JUN-04           54          0                                                        
+      2004 06-JUL-04          569          0                                                        
+      2004 08-SEP-04          961          0                                                        
+      2004 09-NOV-04          163          0                                                        
+      2004 24-NOV-04         2548          0                                                        
+      2004 29-NOV-04          133          0                                                        
+      2004 06-DEC-04          584          0                                                        
+      2004 07-DEC-04          350          0                                                        
+      2004                  75261          1                                                        
+      2005 07-JAN-05          225          0                                                        
+      2005 10-JAN-05           79          0                                                        
+      2005 14-JAN-05          190          0                                                        
+      2005 18-JAN-05        65690          0                                                        
+      2005 21-JAN-05          183          0                                                        
+      2005 22-JAN-05           54          0                                                        
+      2005 26-JAN-05         1377          0                                                        
+      2005 28-JAN-05          141          0                                                        
+      2005 04-FEB-05          109          0                                                        
+      2005 09-FEB-05           56          0                                                        
+      2005 02-MAR-05          884          0                                                        
+      2005 09-MAR-05        40444          0                                                        
+      2005 15-MAY-05          131          0                                                        
+      2005 01-JUN-05        38862          0                                                        
+      2005 03-JUN-05          942          0                                                        
+      2005 20-JUN-05         1059          0                                                        
+      2005 03-OCT-05        44940          0                                                        
+      2005 08-NOV-05         1575          0                                                        
+      2005 21-NOV-05        18365          0                                                        
+      2005                 215306          1                                                        
+      2006 01-FEB-06          286          0                                                        
+      2006 01-MAR-06          218          0                                                        
+      2006 02-MAR-06          218          0                                                        
+      2006 06-MAR-06         1955          0                                                        
+      2006 16-MAR-06           50          0                                                        
+      2006 27-MAR-06        37501          0                                                        
+      2006 04-APR-06        39046          0                                                        
+      2006 11-APR-06           22          0                                                        
+      2006 23-MAY-06          731          0                                                        
+      2006 13-JUN-06         1372          0                                                        
+      2006 14-JUN-06         1372          0                                                        
+      2006 29-JUN-06          107          0                                                        
+      2006 07-NOV-06        60279          0                                                        
+      2006 22-NOV-06           69          0                                                        
+      2006 10-DEC-06          908          0                                                        
+      2006                 144134          1                                                        
+      2007 07-FEB-07         4911          0                                                        
+      2007 10-APR-07         2109          0                                                        
+      2007 06-MAY-07          180          0                                                        
+      2007 18-JUN-07          170          0                                                        
+      2007 26-JUN-07         1717          0                                                        
+      2007 30-JUL-07          326          0                                                        
+      2007 17-OCT-07       135116          0                                                        
+      2007 13-NOV-07        68932          0                                                        
+      2007 15-NOV-07          641          0                                                        
+      2007 20-NOV-07          212          0                                                        
+      2007 05-DEC-07           43          0                                                        
+      2007 06-DEC-07           39          0                                                        
+      2007                 214396          1                                                        
+      2008 06-FEB-08          132          0                                                        
+      2008 11-MAR-08        12456          0                                                        
+      2008 29-APR-08          740          0                                                        
+      2008 21-MAY-08        49774          0                                                        
+      2008 09-JUN-08         4648          0                                                        
+      2008 11-JUN-08           13          0                                                        
+      2008 16-JUN-08        11294          0                                                        
+      2008 17-JUN-08        11294          0                                                        
+      2008 18-JUN-08         6523          0                                                        
+      2008 19-JUN-08          109          0                                                        
+      2008 06-OCT-08        20009          0                                                        
+      2008 05-NOV-08         4055          0                                                        
+      2008 12-NOV-08         1537          0                                                        
+      2008 14-NOV-08           74          0                                                        
+      2008 21-NOV-08           10          0                                                        
+      2008 23-NOV-08         1313          0                                                        
+      2008 24-NOV-08          360          0                                                        
+      2008 28-NOV-08           28          0                                                        
+      2008 05-DEC-08           34          0                                                        
+      2008 12-DEC-08           47          0                                                        
+      2008 19-DEC-08           69          0                                                        
+      2008 26-DEC-08            9          0                                                        
+      2008                 124528          1                                                        
+      2009 09-JAN-09           28          0                                                        
+      2009 15-JAN-09          367          0                                                        
+      2009 16-JAN-09           23          0                                                        
+      2009 23-JAN-09           27          0                                                        
+      2009 28-JAN-09        48234          0                                                        
+      2009 30-JAN-09           24          0                                                        
+      2009 06-FEB-09           16          0                                                        
+      2009 13-FEB-09           22          0                                                        
+      2009 20-FEB-09           31          0                                                        
+      2009 27-FEB-09           32          0                                                        
+      2009 13-MAR-09           26          0                                                        
+      2009 18-MAR-09        46001          0                                                        
+      2009 20-MAR-09           17          0                                                        
+      2009 27-MAR-09           13          0                                                        
+      2009 10-APR-09            8          0                                                        
+      2009 17-APR-09            5          0                                                        
+      2009 24-APR-09           21          0                                                        
+      2009 30-APR-09          209          0                                                        
+      2009 01-MAY-09            0          0                                                        
+      2009 25-MAY-09        28056          0                                                        
+      2009 29-MAY-09           37          0                                                        
+      2009 17-JUN-09          300          0                                                        
+      2009 02-JUL-09           14          0                                                        
+      2009 06-JUL-09         3239          0                                                        
+      2009 15-SEP-09           52          0                                                        
+      2009 21-SEP-09         1082          0                                                        
+      2009 19-OCT-09        32517          0                                                        
+      2009 17-NOV-09         1482          0                                                        
+      2009 30-NOV-09         1941          0                                                        
+      2009 03-DEC-09           42          0                                                        
+      2009 11-DEC-09          680          0                                                        
+      2009 12-DEC-09          166          0                                                        
+      2009 14-DEC-09          163          0                                                        
+      2009                 164875          1                                                        
+                          1248752          3                                                        
+
+139 rows selected.
+
+****************************  REQUETE N°2 ****************************
+Top 10 des plus grosses grèves toutes années confondu
+
+
+DATE_DEB    DATE_FIN    NB_GREVISTES     TOP_10                                                     
+----------- ----------- ------------ ----------                                                     
+17-OCT-07   19-OCT-07          93263          1                                                     
+12-MAY-03   14-MAY-03          81058          2                                                     
+06-SEP-10   08-SEP-10          52782          3                                                     
+18-JAN-05   20-JAN-05          48643          4                                                     
+28-JAN-09   30-JAN-09          48234          5                                                     
+23-JUN-10   25-JUN-10          48218          6                                                     
+17-MAR-03   19-MAR-03          47312          7                                                     
+12-JUN-13   14-JUN-13          47264          8                                                     
+18-MAR-09   20-MAR-09          46001          9                                                     
+03-OCT-05   05-OCT-05          44940         10                                                     
+
+10 rows selected.
+
+****************************  REQUETE N°3 ****************************
+Nombre de grevistes total par an (uniquement les agregats)
+
+
+     ANNEE NB_GREVISTES                                                                             
+---------- ------------                                                                             
+      2002        14211                                                                             
+      2003       296041                                                                             
+      2004        75261                                                                             
+      2005       215306                                                                             
+      2006       144134                                                                             
+      2007       324972                                                                             
+      2008       137867                                                                             
+      2009       166904                                                                             
+      2010       296005                                                                             
+      2011        55457                                                                             
+      2012        97604                                                                             
+      2013       236434                                                                             
+      2014        30313                                                                             
+      2015        73856                                                                             
+      2016                                                                                          
+
+15 rows selected.
+
+****************************  REQUETE N°4 ****************************
+% de grève de chaque type chaque année depuis 2002
+
+
+     ANNEE CATEGORIE_GREVE         RATIO_TYPE_GREVE                                                 
+---------- ----------------------- ----------------                                                 
+      2002 Not defined                           25                                                 
+      2002 Retraite                              50                                                 
+      2002 Salaire                               25                                                 
+      2003 Condition de travail                  10                                                 
+      2003 Not defined                           30                                                 
+      2003 Retraite                              30                                                 
+      2003 Salaire                               30                                                 
+      2004 Condition de travail                  20                                                 
+      2004 Not defined                           60                                                 
+      2004 Salaire                               20                                                 
+      2005 Condition de travail               16.67                                                 
+      2005 Not defined                           75                                                 
+      2005 Salaire                             8.33                                                 
+      2006 Condition de travail               14.29                                                 
+      2006 Not defined                        57.14                                                 
+      2006 Retraite                            9.52                                                 
+      2006 Salaire                            19.05                                                 
+      2007 Not defined                        52.63                                                 
+      2007 Retraite                           26.32                                                 
+      2007 Salaire                            21.05                                                 
+      2008 Condition de travail                9.68                                                 
+      2008 Not defined                        74.19                                                 
+      2008 Retraite                            6.45                                                 
+      2008 Salaire                             9.68                                                 
+      2009 Condition de travail                7.14                                                 
+      2009 Not defined                         88.1                                                 
+      2009 Salaire                             4.76                                                 
+      2010 Condition de travail                9.09                                                 
+      2010 Not defined                        48.48                                                 
+      2010 Retraite                           12.12                                                 
+      2010 Salaire                             30.3                                                 
+      2011 Condition de travail               18.18                                                 
+      2011 Not defined                        54.55                                                 
+      2011 Retraite                            9.09                                                 
+      2011 Salaire                            18.18                                                 
+      2012 Condition de travail               14.29                                                 
+      2012 Not defined                        76.19                                                 
+      2012 Salaire                             9.52                                                 
+      2013 Condition de travail                  25                                                 
+      2013 Not defined                        46.88                                                 
+      2013 Retraite                            6.25                                                 
+      2013 Salaire                            21.88                                                 
+      2014 Condition de travail               30.77                                                 
+      2014 Not defined                        61.54                                                 
+      2014 Salaire                             7.69                                                 
+      2015 Condition de travail                8.33                                                 
+      2015 Not defined                           75                                                 
+      2015 Retraite                            8.33                                                 
+      2015 Salaire                             8.33                                                 
+      2016 Not defined                        81.82                                                 
+      2016 Salaire                            18.18                                                 
+
+51 rows selected.
+
+****************************  REQUETE N°4 bis ****************************
+% de grève de chaque type chaque année depuis 2002
+
+
+CATEGORIE_GREVE         RATIO_TYPE_GREVE                                                            
+----------------------- ----------------                                                            
+Not defined                        63.11                                                            
+Condition de travail               12.62                                                            
+Retraite                            8.09                                                            
+Salaire                            16.18                                                            
+
+4 rows selected.
+
+****************************  REQUETE N°5 ****************************
+Affiche le nombre de grèviste par an et par association (uniquement pour CGT, SUD et CFDT) entre 2002 et 2005 en utilisant grouping sets
+
+
+     ANNEE SYND NB_GREVISTES                                                                        
+---------- ---- ------------                                                                        
+      2002 CFDT         1758                                                                        
+      2002 CGT          1491                                                                        
+      2002 SUD          1758                                                                        
+      2002              1758                                                                        
+      2003 CFDT       212531                                                                        
+      2003 CGT        213567                                                                        
+      2003 SUD        236413                                                                        
+      2003            256614                                                                        
+      2004 CFDT        32938                                                                        
+      2004 CGT         71831                                                                        
+      2004 SUD         74167                                                                        
+      2004             74167                                                                        
+      2005 CFDT        93583                                                                        
+      2005 CGT        193453                                                                        
+      2005 SUD        162590                                                                        
+      2005            211233                                                                        
+                      543718                                                                        
+
+17 rows selected.
+
+****************************  REQUETE N°6 ****************************
+Affiche le nombre de grèves par saison utilisant group by rollup
+
+
+SAISON               POURCENTAGE  NB_GREVES                                                         
+-------------------- ----------- ----------                                                         
+Automne               12.1636842         19                                                         
+Ete                   15.2137895        101                                                         
+Hiver                 15.5145882         85                                                         
+Printemps             12.1862162         81                                                         
+                      14.2745055        286                                                         
+
+5 rows selected.
+
+****************************  REQUETE N°7 ****************************
+Group By Cube avec les années, les syndicats : CGT et SUD; et les métiers : tractionnaires et agent de manoeuvre pour les année supérieurs ou égales à 2010
+
+
+     ANNEE SYNDIC METIER                  TOTAL                                                     
+---------- ------ ------------------ ----------                                                     
+      2010 CGT    agent de manoeuvre          1                                                     
+      2010 CGT                                1                                                     
+      2010 SUD    agent de manoeuvre          1                                                     
+      2010 SUD                                1                                                     
+      2010        agent de manoeuvre          2                                                     
+      2010                                    2                                                     
+      2011 CGT    agent de manoeuvre          1                                                     
+      2011 CGT                                1                                                     
+      2011 SUD    agent de manoeuvre          1                                                     
+      2011 SUD                                1                                                     
+      2011        agent de manoeuvre          2                                                     
+      2011                                    2                                                     
+      2012 CGT    agent de manoeuvre          1                                                     
+      2012 CGT                                1                                                     
+      2012 SUD    agent de manoeuvre          1                                                     
+      2012 SUD                                1                                                     
+      2012        agent de manoeuvre          2                                                     
+      2012                                    2                                                     
+      2013 CGT    agent de manoeuvre          1                                                     
+      2013 CGT                                1                                                     
+      2013 SUD    agent de manoeuvre          1                                                     
+      2013 SUD                                1                                                     
+      2013        agent de manoeuvre          2                                                     
+      2013                                    2                                                     
+      2014 CGT    agent de manoeuvre          1                                                     
+      2014 CGT                                1                                                     
+      2014 SUD    agent de manoeuvre          1                                                     
+      2014 SUD                                1                                                     
+      2014        agent de manoeuvre          2                                                     
+      2014                                    2                                                     
+      2015 CGT    tractionnaire               1                                                     
+      2015 CGT                                1                                                     
+      2015 SUD    tractionnaire               1                                                     
+      2015 SUD                                1                                                     
+      2015        tractionnaire               2                                                     
+      2015                                    2                                                     
+           CGT    agent de manoeuvre          5                                                     
+           CGT    tractionnaire               1                                                     
+           CGT                                6                                                     
+           SUD    agent de manoeuvre          5                                                     
+           SUD    tractionnaire               1                                                     
+           SUD                                6                                                     
+                  agent de manoeuvre         10                                                     
+                  tractionnaire               2                                                     
+                                             12                                                     
+
+45 rows selected.
+
+****************************  REQUETE N°8 ****************************
+Top 5 des grèves les plus longues pour lesquelles la CGT était présente
+
+
+DUREE_EN_JOUR      ANNEE NB_GREVISTES                                                               
+------------- ---------- ------------                                                               
+           69       2015        14264                                                               
+           31       2012        18689                                                               
+           31       2007          326                                                               
+           31       2011          509                                                               
+           31       2013         1298                                                               
+
+5 rows selected.
+
+****************************  REQUETE N°9 ****************************
+Group By Cube sur l''année, la catégorie de grève ainsi que la saison
+
+
+     ANNEE CATEGORIE_GREVE         SAISON                    TOTAL                                  
+---------- ----------------------- -------------------- ----------                                  
+      2008 Condition de travail    Ete                           1                                  
+      2008 Condition de travail    Hiver                         1                                  
+      2008 Condition de travail                                  2                                  
+      2008 Retraite                Ete                           1                                  
+      2008 Retraite                                              1                                  
+      2008 Salaire                 Ete                           1                                  
+      2008 Salaire                 Hiver                         1                                  
+      2008 Salaire                                               2                                  
+      2008                         Ete                           3                                  
+      2008                         Hiver                         2                                  
+      2008                                                       5                                  
+      2009 Condition de travail    Automne                       1                                  
+      2009 Condition de travail    Hiver                         1                                  
+      2009 Condition de travail    Printemps                     1                                  
+      2009 Condition de travail                                  3                                  
+      2009 Salaire                 Hiver                         1                                  
+      2009 Salaire                 Printemps                     1                                  
+      2009 Salaire                                               2                                  
+      2009                         Automne                       1                                  
+      2009                         Hiver                         2                                  
+      2009                         Printemps                     2                                  
+      2009                                                       5                                  
+      2010 Condition de travail    Ete                           1                                  
+      2010 Condition de travail                                  1                                  
+      2010 Retraite                Printemps                     1                                  
+      2010 Retraite                                              1                                  
+      2010 Salaire                 Automne                       1                                  
+      2010 Salaire                 Ete                           1                                  
+      2010 Salaire                 Hiver                         1                                  
+      2010 Salaire                 Printemps                     1                                  
+      2010 Salaire                                               4                                  
+      2010                         Automne                       1                                  
+      2010                         Ete                           2                                  
+      2010                         Hiver                         1                                  
+      2010                         Printemps                     2                                  
+      2010                                                       6                                  
+      2011 Condition de travail    Hiver                         1                                  
+      2011 Condition de travail                                  1                                  
+      2011 Retraite                Hiver                         1                                  
+      2011 Retraite                                              1                                  
+      2011 Salaire                 Hiver                         1                                  
+      2011 Salaire                                               1                                  
+      2011                         Hiver                         3                                  
+      2011                                                       3                                  
+      2012 Condition de travail    Ete                           1                                  
+      2012 Condition de travail    Printemps                     1                                  
+      2012 Condition de travail                                  2                                  
+      2012 Salaire                 Ete                           1                                  
+      2012 Salaire                 Printemps                     1                                  
+      2012 Salaire                                               2                                  
+      2012                         Ete                           2                                  
+      2012                         Printemps                     2                                  
+      2012                                                       4                                  
+      2013 Condition de travail    Automne                       1                                  
+      2013 Condition de travail    Ete                           1                                  
+      2013 Condition de travail    Hiver                         1                                  
+      2013 Condition de travail    Printemps                     1                                  
+      2013 Condition de travail                                  4                                  
+      2013 Retraite                Automne                       1                                  
+      2013 Retraite                Hiver                         1                                  
+      2013 Retraite                                              2                                  
+      2013 Salaire                 Automne                       1                                  
+      2013 Salaire                 Ete                           1                                  
+      2013 Salaire                 Hiver                         1                                  
+      2013 Salaire                 Printemps                     1                                  
+      2013 Salaire                                               4                                  
+      2013                         Automne                       3                                  
+      2013                         Ete                           2                                  
+      2013                         Hiver                         3                                  
+      2013                         Printemps                     2                                  
+      2013                                                      10                                  
+      2014 Condition de travail    Ete                           1                                  
+      2014 Condition de travail    Printemps                     1                                  
+      2014 Condition de travail                                  2                                  
+      2014 Salaire                 Printemps                     1                                  
+      2014 Salaire                                               1                                  
+      2014                         Ete                           1                                  
+      2014                         Printemps                     2                                  
+      2014                                                       3                                  
+      2015 Condition de travail    Printemps                     1                                  
+      2015 Condition de travail                                  1                                  
+      2015 Retraite                Automne                       1                                  
+      2015 Retraite                                              1                                  
+      2015 Salaire                 Printemps                     1                                  
+      2015 Salaire                                               1                                  
+      2015                         Automne                       1                                  
+      2015                         Printemps                     2                                  
+      2015                                                       3                                  
+      2016 Salaire                 Ete                           1                                  
+      2016 Salaire                                               1                                  
+      2016                         Ete                           1                                  
+      2016                                                       1                                  
+           Condition de travail    Automne                       2                                  
+           Condition de travail    Ete                           5                                  
+           Condition de travail    Hiver                         4                                  
+           Condition de travail    Printemps                     5                                  
+           Condition de travail                                 16                                  
+           Retraite                Automne                       2                                  
+           Retraite                Ete                           1                                  
+           Retraite                Hiver                         2                                  
+           Retraite                Printemps                     1                                  
+           Retraite                                              6                                  
+           Salaire                 Automne                       2                                  
+           Salaire                 Ete                           5                                  
+           Salaire                 Hiver                         5                                  
+           Salaire                 Printemps                     6                                  
+           Salaire                                              18                                  
+                                   Automne                       6                                  
+                                   Ete                          11                                  
+                                   Hiver                        11                                  
+                                   Printemps                    12                                  
+                                                                40                                  
+
+112 rows selected.
+
+****************************  REQUETE N°10 ****************************
+Requête avec une window
+
+
+     ANNEE NB_GREVISTES      CUMUL                                                                  
+---------- ------------ ----------                                                                  
+      2002          267        267                                                                  
+      2002         1491       1758                                                                  
+      2002        12453      14211                                                                  
+      2003            8      14219                                                                  
+      2003           23      14242                                                                  
+      2003          334      14576                                                                  
+      2003          358      14934                                                                  
+      2003          694      15628                                                                  
+      2003         1036      16664                                                                  
+      2003         1983      18647                                                                  
+      2003         2279      20926                                                                  
+      2003         8336      29262                                                                  
+      2003        11171      40433                                                                  
+      2003        11867      52300                                                                  
+      2003        20017      72317                                                                  
+      2003        31172     103489                                                                  
+      2003        37086     140575                                                                  
+      2003        41307     181882                                                                  
+      2003        47312     229194                                                                  
+      2003        81058     310252                                                                  
+      2004           54     310306                                                                  
+      2004           82     310388                                                                  
+      2004          133     310521                                                                  
+      2004          163     310684                                                                  
+      2004          173     310857                                                                  
+      2004          261     311118                                                                  
+      2004          350     311468                                                                  
+      2004          473     311941                                                                  
+      2004          488     312429                                                                  
+      2004          569     312998                                                                  
+      2004          584     313582                                                                  
+      2004          695     314277                                                                  
+      2004         2466     316743                                                                  
+      2004        30472     347215                                                                  
+      2004        38298     385513                                                                  
+      2005           54     385567                                                                  
+      2005           56     385623                                                                  
+      2005           79     385702                                                                  
+      2005          109     385811                                                                  
+      2005          127     385938                                                                  
+      2005          131     386069                                                                  
+      2005          141     386210                                                                  
+      2005          183     386393                                                                  
+      2005          190     386583                                                                  
+      2005          225     386808                                                                  
+      2005          884     387692                                                                  
+      2005          932     388624                                                                  
+      2005          942     389566                                                                  
+      2005         1377     390943                                                                  
+      2005         1575     392518                                                                  
+      2005         1979     394497                                                                  
+      2005         2983     397480                                                                  
+      2005        15382     412862                                                                  
+      2005        17047     429909                                                                  
+      2005        36883     466792                                                                  
+      2005        40444     507236                                                                  
+      2005        44940     552176                                                                  
+      2005        48643     600819                                                                  
+      2006           22     600841                                                                  
+      2006           50     600891                                                                  
+      2006           69     600960                                                                  
+      2006          107     601067                                                                  
+      2006          218     601285                                                                  
+      2006          286     601571                                                                  
+      2006          731     602302                                                                  
+      2006          908     603210                                                                  
+      2006         1372     604582                                                                  
+      2006         1955     606537                                                                  
+      2006         4479     611016                                                                  
+      2006        13023     624039                                                                  
+      2006        18634     642673                                                                  
+      2006        26023     668696                                                                  
+      2006        37166     705862                                                                  
+      2006        37501     743363                                                                  
+      2007           39     743402                                                                  
+      2007           43     743445                                                                  
+      2007          170     743615                                                                  
+      2007          180     743795                                                                  
+      2007          212     744007                                                                  
+      2007          326     744333                                                                  
+      2007          641     744974                                                                  
+      2007         1717     746691                                                                  
+      2007         2109     748800                                                                  
+      2007         4911     753711                                                                  
+      2007         9699     763410                                                                  
+      2007        14841     778251                                                                  
+      2007        17313     795564                                                                  
+      2007        30793     826357                                                                  
+      2007        38139     864496                                                                  
+      2007        93263     957759                                                                  
+      2008            9     957768                                                                  
+      2008           10     957778                                                                  
+      2008           13     957791                                                                  
+      2008           17     957808                                                                  
+      2008           20     957828                                                                  
+      2008           28     957856                                                                  
+      2008           34     957890                                                                  
+      2008           47     957937                                                                  
+      2008           49     957986                                                                  
+      2008           57     958043                                                                  
+      2008          109     958152                                                                  
+      2008          132     958284                                                                  
+      2008          360     958644                                                                  
+      2008          740     959384                                                                  
+      2008         1313     960697                                                                  
+      2008         1537     962234                                                                  
+      2008         1632     963866                                                                  
+      2008         1994     965860                                                                  
+      2008         2897     968757                                                                  
+      2008         3496     972253                                                                  
+      2008         4055     976308                                                                  
+      2008         4648     980956                                                                  
+      2008         6670     987626                                                                  
+      2008        11294     998920                                                                  
+      2008        11570    1010490                                                                  
+      2008        12456    1022946                                                                  
+      2008        13339    1036285                                                                  
+      2008        34708    1070993                                                                  
+      2009            0    1070993                                                                  
+      2009            5    1070998                                                                  
+      2009            8    1071006                                                                  
+      2009            9    1071015                                                                  
+      2009           12    1071027                                                                  
+      2009           13    1071040                                                                  
+      2009           14    1071054                                                                  
+      2009           16    1071070                                                                  
+      2009           17    1071087                                                                  
+      2009           22    1071109                                                                  
+      2009           23    1071132                                                                  
+      2009           24    1071156                                                                  
+      2009           26    1071182                                                                  
+      2009           27    1071209                                                                  
+      2009           28    1071237                                                                  
+      2009           31    1071268                                                                  
+      2009           32    1071300                                                                  
+      2009           37    1071337                                                                  
+      2009           39    1071376                                                                  
+      2009           42    1071418                                                                  
+      2009           52    1071470                                                                  
+      2009           88    1071558                                                                  
+      2009          163    1071721                                                                  
+      2009          209    1071930                                                                  
+      2009          300    1072230                                                                  
+      2009          340    1072570                                                                  
+      2009          367    1072937                                                                  
+      2009         1080    1074017                                                                  
+      2009         1082    1075099                                                                  
+      2009         1482    1076581                                                                  
+      2009         1941    1078522                                                                  
+      2009         2159    1080681                                                                  
+      2009        28056    1108737                                                                  
+      2009        32517    1141254                                                                  
+      2009        46001    1187255                                                                  
+      2009        48234    1235489                                                                  
+      2010            2    1235491                                                                  
+      2010           39    1235530                                                                  
+      2010           67    1235597                                                                  
+      2010          113    1235710                                                                  
+      2010          262    1235972                                                                  
+      2010          460    1236432                                                                  
+      2010          687    1237119                                                                  
+      2010          946    1238065                                                                  
+      2010         1098    1239163                                                                  
+      2010         1139    1240302                                                                  
+      2010         1155    1241457                                                                  
+      2010         1199    1242656                                                                  
+      2010         2546    1245202                                                                  
+      2010         3111    1248313                                                                  
+      2010         3300    1251613                                                                  
+      2010         3498    1255111                                                                  
+      2010         3610    1258721                                                                  
+      2010         5524    1264245                                                                  
+      2010         6478    1270723                                                                  
+      2010        10730    1281453                                                                  
+      2010        28894    1310347                                                                  
+      2010        36545    1346892                                                                  
+      2010        37079    1383971                                                                  
+      2010        48218    1432189                                                                  
+      2010        52782    1484971                                                                  
+      2011           24    1484995                                                                  
+      2011           73    1485068                                                                  
+      2011          142    1485210                                                                  
+      2011          273    1485483                                                                  
+      2011          509    1485992                                                                  
+      2011          901    1486893                                                                  
+      2011         9172    1496065                                                                  
+      2011        16897    1512962                                                                  
+      2011        27466    1540428                                                                  
+      2012            3    1540431                                                                  
+      2012           14    1540445                                                                  
+      2012           97    1540542                                                                  
+      2012          120    1540662                                                                  
+      2012          143    1540805                                                                  
+      2012          472    1541277                                                                  
+      2012          527    1541804                                                                  
+      2012          720    1542524                                                                  
+      2012         1374    1543898                                                                  
+      2012         1419    1545317                                                                  
+      2012         3093    1548410                                                                  
+      2012         3524    1551934                                                                  
+      2012         3529    1555463                                                                  
+      2012         3877    1559340                                                                  
+      2012         4431    1563771                                                                  
+      2012        18689    1582460                                                                  
+      2012        29482    1611942                                                                  
+      2013            5    1611947                                                                  
+      2013           38    1611985                                                                  
+      2013           49    1612034                                                                  
+      2013           53    1612087                                                                  
+      2013           62    1612149                                                                  
+      2013          202    1612351                                                                  
+      2013          522    1612873                                                                  
+      2013          576    1613449                                                                  
+      2013          731    1614180                                                                  
+      2013         1104    1615284                                                                  
+      2013         1298    1616582                                                                  
+      2013         1849    1618431                                                                  
+      2013         2098    1620529                                                                  
+      2013         2924    1623453                                                                  
+      2013         4197    1627650                                                                  
+      2013         5073    1632723                                                                  
+      2013         5405    1638128                                                                  
+      2013        12264    1650392                                                                  
+      2013        15212    1665604                                                                  
+      2013        16085    1681689                                                                  
+      2013        16940    1698629                                                                  
+      2013        24798    1723427                                                                  
+      2013        33860    1757287                                                                  
+      2013        47264    1804551                                                                  
+      2014           11    1804562                                                                  
+      2014           25    1804587                                                                  
+      2014          123    1804710                                                                  
+      2014          126    1804836                                                                  
+      2014          223    1805059                                                                  
+      2014          296    1805355                                                                  
+      2014          325    1805680                                                                  
+      2014          396    1806076                                                                  
+      2014          877    1806953                                                                  
+      2014          900    1807853                                                                  
+      2014         2437    1810290                                                                  
+      2014         4824    1815114                                                                  
+      2014        19750    1834864                                                                  
+      2015          375    1835239                                                                  
+      2015          686    1835925                                                                  
+      2015         4038    1839963                                                                  
+      2015         6158    1846121                                                                  
+      2015         9148    1855269                                                                  
+      2015        10727    1865996                                                                  
+      2015        11472    1877468                                                                  
+      2015        14264    1891732                                                                  
+      2015        16988    1908720                                                                  
+      2015                 1908720                                                                  
+      2016                 1908720                                                                  
+
+253 rows selected.
+
+SQL> 
