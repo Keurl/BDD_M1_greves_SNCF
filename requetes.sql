@@ -13,10 +13,10 @@ prompt *******************************************************************
 prompt
   
 prompt ****************************  REQUETE N°1 ****************************
-prompt 
+prompt Permet de récupérer le nombre de grévistes par grève et par année 
 prompt 
 
-SELECT annee, date_deb, SUM(nb_grevistes) AS nb_grevistes, GROUPING_ID(annee, date_deb)
+SELECT annee, date_deb, SUM(nb_grevistes) AS nb_grevistes, GROUPING_ID(annee, date_deb) AS ID
 FROM 	(SELECT annee, date_deb, date_fin, nb_grevistes
 		FROM Table_Faits NATURAL JOIN Temps NATURAL JOIN Nb_Travailleurs
 		GROUP BY (annee, date_deb, date_fin, nb_grevistes))
